@@ -1,8 +1,5 @@
 <?php
-/**
- * Modelo de Tarea
- * Archivo: src/models/Task.php
- */
+
 
 class Task {
     private $db;
@@ -10,12 +7,9 @@ class Task {
     public function __construct($database) {
         $this->db = $database;
     }
-
-    /**
-     * Crear una nueva tarea
-     * @param array $data Datos de la tarea
-     * @return array Respuesta con éxito o error
-     */
+    
+     // Crear una nueva tarea
+   
     public function create($data) {
         // Validaciones básicas
         if (empty($data['title'])) {
@@ -56,10 +50,6 @@ class Task {
         }
     }
 
-    /**
-     * Obtener todas las tareas con información del responsable
-     * @return array Arreglo de tareas
-     */
     public function getAll() {
         $sql = "SELECT t.*, u.name as user_name, u.email as user_email 
                 FROM tasks t 
@@ -81,11 +71,7 @@ class Task {
         return $tasks;
     }
 
-    /**
-     * Obtener una tarea por ID
-     * @param int $id ID de la tarea
-     * @return array|null Datos de la tarea
-     */
+     //funcion para obterner una tarea
     public function getById($id) {
         $sql = "SELECT t.*, u.name as user_name 
                 FROM tasks t 
@@ -100,12 +86,7 @@ class Task {
         return null;
     }
 
-    /**
-     * Actualizar una tarea
-     * @param int $id ID de la tarea
-     * @param array $data Datos a actualizar
-     * @return array Respuesta con éxito o error
-     */
+    //Funcion para actualizar una tarea
     public function update($id, $data) {
         $id = intval($id);
 
@@ -147,12 +128,8 @@ class Task {
             return ['success' => false, 'error' => 'Error al actualizar la tarea'];
         }
     }
-
-    /**
-     * Eliminar una tarea
-     * @param int $id ID de la tarea
-     * @return array Respuesta con éxito o error
-     */
+    
+  // Funcion para Eliminar una tarea
     public function delete($id) {
         $id = intval($id);
 
