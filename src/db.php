@@ -1,8 +1,4 @@
 <?php
-/**
- * Configuración de la aplicación
- * Archivo: src/config.php
- */
 
 // Configuración de base de datos
 define('DB_HOST', 'localhost');
@@ -10,13 +6,9 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'task_manager');
 
-// Configuración de la aplicación
 //define('APP_NAME', 'Gestor de Tareas');
 //define('BASE_URL', 'http://localhost/task-manager/public/');
 
-/**
- * Clase para conexión a base de datos
- */
 class Database {
     private $conn;
     private $error;
