@@ -1,8 +1,4 @@
 <?php
-/**
- * Modelo de Usuario
- * Archivo: src/models/User.php
- */
 
 class User {
     private $db;
@@ -10,11 +6,8 @@ class User {
     public function __construct($database) {
         $this->db = $database;
     }
-
-    /**
-     * Obtener todos los usuarios activos
-     * @return array Arreglo de usuarios
-     */
+     // Obtener todos los usuarios activos
+     
     public function getActiveUsers() {
         $sql = "SELECT id, name, email FROM users WHERE is_active = 1 ORDER BY name ASC";
         $result = $this->db->query($sql);
@@ -25,12 +18,8 @@ class User {
         }
         return $users;
     }
+    // Obtener usuario por ID
 
-    /**
-     * Obtener usuario por ID
-     * @param int $id ID del usuario
-     * @return array|null Datos del usuario o null
-     */
     public function getUserById($id) {
         $sql = "SELECT id, name, email, is_active FROM users WHERE id = " . intval($id);
         $result = $this->db->query($sql);
@@ -40,21 +29,14 @@ class User {
         }
         return null;
     }
-
-    /**
-     * Validar que el usuario está activo
-     * @param int $id ID del usuario
-     * @return bool True si está activo
-     */
+     // Validar que el usuario está activo
+     
     public function isActive($id) {
         $user = $this->getUserById($id);
         return $user && $user['is_active'] == 1;
     }
-
-    /**
-     * Obtener todos los usuarios
-     * @return array Arreglo de usuarios
-     */
+     // Obtener todos los usuarios
+  
     public function getAllUsers() {
         $sql = "SELECT id, name, email, is_active, created_at FROM users ORDER BY created_at DESC";
         $result = $this->db->query($sql);
